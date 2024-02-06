@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import Sunny from "../../public/assets/sunny.svg";
-import Cloud from "../../public/assets/cloud.svg";
-import Rain from "../../public/assets/rain.svg";
+import Sunny from "../assets/sunny.svg";
+import Cloud from "../assets/cloud.svg";
+import Rain from "../assets/rain.svg";
 import { Search } from "@mui/icons-material";
 
 const SideBar = () => {
