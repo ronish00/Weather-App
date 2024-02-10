@@ -4,19 +4,24 @@ import Cloud from "../assets/cloud.svg";
 import Rain from "../assets/rain.svg";
 import { Search } from "@mui/icons-material";
 
-const SideBar = () => {
-  const [search, setSearch] = useState();
+const SideBar = ({setCity}) => {
+  const [searchValue, setSearchValue] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setCity(searchValue);
+  }
 
   return (
-    <div className="w-72 bg-white h-full p-8">
-      <form className="flex items-center gap-2">
+    <div className="w-72 bg-white h-[100vh] p-8 sticky top-0">
+      <form className="flex items-center gap-2" onSubmit={handleSubmit}>
         <Search />
         <input
           className="placeholder:text-black placeholder:text-sm focus:outline-none"
           type="text"
           placeholder="Search for Places"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
+          value={searchValue}
+          onChange={(e) => setSearchValue(e.target.value)}
         />
       </form>
       <img src={Sunny} alt="" className="w-40 mt-7" />
