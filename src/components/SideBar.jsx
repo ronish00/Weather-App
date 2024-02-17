@@ -4,7 +4,7 @@ import Cloud from "../assets/cloud.svg";
 import Rain from "../assets/rain.svg";
 import { Search } from "@mui/icons-material";
 
-const SideBar = ({setCity}) => {
+const SideBar = ({setCity, temp, weather, rain, name}) => {
   const [searchValue, setSearchValue] = useState('');
 
   const handleSubmit = (e) => {
@@ -26,23 +26,23 @@ const SideBar = ({setCity}) => {
       </form>
       <img src={Sunny} alt="" className="w-40 mt-7" />
       <h1 className="text-7xl font-[300] mt-7">
-        12
+        {temp}
         <sup>
           <span className="text-4xl">o</span>c
         </sup>
       </h1>
       <h4 className="mt-5">
-        Monday,<span className="text-gray-400"> 16:00</span>
+        {name}
       </h4>
       <hr className="mt-6 border-slate-300" />
       <ul className="mt-6 flex flex-col gap-6">
         <li className="flex items-center gap-2">
           <img src={Cloud} alt="" />
-          <span>Mostly Cloudy</span>
+          <span>{weather}</span>
         </li>
         <li className="flex items-center gap-2">
           <img src={Rain} alt="" />
-          <span>Rain - 30%</span>
+          <span>Rain - {rain}%</span>
         </li>
       </ul>
     </div>

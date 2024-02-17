@@ -1,12 +1,12 @@
 import UV from '../assets/UV.png'
 import wind from '../assets/wind.png'
-import humidity from '../assets/humidity.png'
+import humidityImg from '../assets/humidity.png'
 import fog from '../assets/fog.png'
 import air from '../assets/air.png'
 import DayNight from '../assets/day-and-night.png'
 import HighlightItem from './HighlightItem'
 
-const Hightlights = () => {
+const Hightlights = ({visibility, windSpeed, humidity}) => {
 
     const ItemName =[
         {
@@ -19,18 +19,22 @@ const Hightlights = () => {
             'id' : 2,
             'img':  `${wind}`,
             'name': 'Wind Status',
-            'unit': 'km/h'
+            'unit': 'm/s',
+            'value': `${windSpeed}`,
         },
         {
             'id' : 3,
-            'img':  `${humidity}`,
+            'img':  `${humidityImg}`,
             'name': 'Humidity',
+            'value': `${humidity}`,
+            'unit': '%'
         },
         {
             'id' : 4,
             'img':  `${fog}`,
             'name': 'Visibility',
-            'unit': 'km'
+            'unit': 'km',
+            'value': `${visibility}`
         },
         {
             'id' : 5,
@@ -49,7 +53,7 @@ const Hightlights = () => {
       <h3 className='text-2xl font-semibold'>Today's Hightlights</h3>
       <ul className='flex items-center flex-wrap gap-6 mt-8 '>
         {
-            ItemName.map( item => <HighlightItem key={item.id} img={item.img} name={item.name} unit={item?.unit} />  )
+            ItemName.map( item => <HighlightItem key={item.id} img={item.img} name={item.name} unit={item?.unit} value={item?.value} />  )
         }
       </ul>
     </div>
