@@ -27,6 +27,16 @@ function App() {
 
   }, [city]);
 
+  if(!weatherData){
+    return (
+      <div className='h-[100vh] flex flex-col gap-6 justify-center items-center'>
+        <h1 className='text-center align-middle w-[225px]'>{city} city do not exist in this planet. Try another name</h1>
+        <button onClick={ () => window.location.reload()} class="rounded-lg px-4 py-2 bg-blue-500 text-white hover:bg-blue-600 duration-300">Refresh</button>
+      </div>
+    )
+  }
+
+  console.log(weatherData);
   const temp = weatherData.length > 0 ? Math.floor(weatherData[0].main.temp) : null;
   const humidity = weatherData.length > 0 ? weatherData[0].main.humidity : null;
   const weather = weatherData.length > 0 ? weatherData[0].weather[0].main : null;
@@ -34,8 +44,6 @@ function App() {
   const windSpeed = weatherData.length > 0 ? weatherData[0].wind.speed : null;
   const rain = weatherData.length > 0 ? weatherData[0].rain ? weatherData[0].rain["1h"]*100 : null : null;
   const cityName = weatherData.length > 0 ? weatherData[0].name : null;
-  
-  console.log(weatherData);
 
   return (
     <div className='bg-slate-100 flex'>
